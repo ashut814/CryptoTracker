@@ -1,5 +1,6 @@
 {
   "name": "myapp",
+  "homepage": "http://ashut814.github.io/cryptoTracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "axios": "^0.26.0",
     "buffer": "^6.0.3",
     "chart.js": "^3.7.1",
+    "npm3": "^1.1.1",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.5.1",
     "react-chartjs-2": "^4.0.1",
@@ -22,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

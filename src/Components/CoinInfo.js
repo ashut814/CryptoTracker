@@ -1,24 +1,38 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { HistoricalChart } from "../config/api";
-import { Line  } from "react-chartjs-2";
-import { Chart, registerables } from 'chart.js';
-
 import {
   CircularProgress,
   createTheme,
   makeStyles,
-  ThemeProvider,
+  ThemeProvider
 } from "@material-ui/core";
 import SelectButton from "./SelectButton";
 import { chartDays } from "../config/data";
 import { CryptoState } from "../CryptoContext";
 
+import { Line } from "react-chartjs-2";
+import {
+  Chart,
+  LinearScale,
+  CategoryScale,
+  LineElement,
+  PointElement
+} from "chart.js";
+
+Chart.register(CategoryScale);
+
+Chart.register(LinearScale);
+
+Chart.register(LineElement);
+
+Chart.register(PointElement);
+
 const CoinInfo = ({ coin }) => {
   const [historicData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
   const { currency } = CryptoState();
-  const [flag,setflag] = useState(false);
+  const [flag, setflag] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     container: {
@@ -33,9 +47,9 @@ const CoinInfo = ({ coin }) => {
         width: "100%",
         marginTop: 0,
         padding: 20,
-        paddingTop: 0,
-      },
-    },
+        paddingTop: 0
+      }
+    }
   }));
 
   const classes = useStyles();
@@ -56,16 +70,16 @@ const CoinInfo = ({ coin }) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main: "#fff"
       },
-      type: "dark",
-    },
+      type: "dark"
+    }
   });
 
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        {!historicData | flag===false ? (
+        {!historicData | (flag === false) ? (
           <CircularProgress
             style={{ color: "gold" }}
             size={250}
@@ -88,16 +102,16 @@ const CoinInfo = ({ coin }) => {
                   {
                     data: historicData.map((coin) => coin[1]),
                     label: `Price ( Past ${days} Days ) in ${currency}`,
-                    borderColor: "#EEBC1D",
-                  },
-                ],
+                    borderColor: "#EEBC1D"
+                  }
+                ]
               }}
               options={{
                 elements: {
                   point: {
-                    radius: 1,
-                  },
-                },
+                    radius: 1
+                  }
+                }
               }}
             />
             <div
@@ -105,13 +119,14 @@ const CoinInfo = ({ coin }) => {
                 display: "flex",
                 marginTop: 20,
                 justifyContent: "space-around",
-                width: "100%",
+                width: "100%"
               }}
             >
               {chartDays.map((day) => (
                 <SelectButton
                   key={day.value}
-                  onClick={() => {setDays(day.value);
+                  onClick={() => {
+                    setDays(day.value);
                     setflag(false);
                   }}
                   selected={day.value === days}
