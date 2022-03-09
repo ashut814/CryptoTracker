@@ -13,6 +13,7 @@
     "axios": "^0.26.0",
     "buffer": "^6.0.3",
     "chart.js": "^3.7.1",
+    "gh-pages": "^3.2.3",
     "npm3": "^1.1.1",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.5.1",
