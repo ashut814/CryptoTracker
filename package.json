@@ -1,6 +1,6 @@
 {
   "name": "myapp",
-  "homepage": "http://ashut814.github.io/cryptoTracker",
+  "homepage": "http://ashut814.github.io/CryptoTracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
