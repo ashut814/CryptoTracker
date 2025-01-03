@@ -22,7 +22,7 @@ const clasess = useStyles();
     <div className={clasess.App}>
       <Header />
       <Routes>
-      <Route exact path="/" element={<Homepage />}></Route>
+      // <Route exact path="/" element={<Homepage />}></Route>
       <Route path="/coins/:id" exact element={ <Coinpage/> }> </Route>
       </Routes>
     </div>
